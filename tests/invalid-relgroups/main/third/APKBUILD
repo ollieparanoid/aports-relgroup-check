@@ -1,0 +1,3 @@
+relgroup1="relgroup1"
+relgroup="$relgroup1"
+pkgver="1.0.1"

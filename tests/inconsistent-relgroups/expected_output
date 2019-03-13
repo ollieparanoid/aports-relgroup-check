@@ -1,0 +1,9 @@
+ERROR: relgroup 'relgroup1' is inconsistent:
+       pkgver="1.0.0": ./main/first/APKBUILD
+       pkgver="1.0.0": ./main/second/APKBUILD
+       pkgver="1.0.1": ./main/third/APKBUILD
+ERROR: relgroup 'relgroup2' is inconsistent:
+       pkgver="2.1.0": ./community/fifth/APKBUILD
+       pkgver="2.0.0": ./community/fourth/APKBUILD
+*** relgroup test failed!
+exit code: 1
