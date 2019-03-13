@@ -1,0 +1,36 @@
+dist: trusty
+sudo: required
+language: minimal
+install:
+  - sudo apt-get install shellcheck realpath
+  # Use aports.git code for setting up Alpine chroot in Travis
+  - export CLONE_DIR="$PWD"
+  - mkdir -p /tmp/aports
+  - cd /tmp/aports
+  - wget -q https://github.com/alpinelinux/aports/archive/master.tar.gz -O aports.tar.gz
+  - tar -xf aports.tar.gz
+  - cd aports-master
+  - cp -r .travis "$CLONE_DIR"
+  - cd "$CLONE_DIR"
+  - sudo .travis/install-alpine
+  - sudo .travis/setup-alpine
+
+script: |
+  set -e
+  source .travis/common.sh
+
+  fold_start shellcheck "Running shellcheck"
+  shellcheck relgroup-check.sh
+  shellcheck tests/run.sh
+  fold_end shellcheck
+
+  fold_start run1 "Running tests directly in Travis"
+  tests/run.sh
+  fold_end run1
+
+  fold_start run2 "Running tests in Alpine chroot"
+  alpine_run $USER tests/run.sh
+  fold_end run2
+
+notifications:
+  email: false
