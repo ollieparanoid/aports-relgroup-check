@@ -14,7 +14,7 @@ if ! [ -e "$APORTS/main/build-base" ]; then
 	exit 1
 fi
 cd "$APORTS"
-apkbuilds="$(find . -name APKBUILD)"
+APKBUILDS="$(find . -name APKBUILD)"
 
 # All relgroup lines must start with 'relgroup="..."'. So we can use grep to
 # find relevant APKBUILDs and avoid running a shell parser for each one.
@@ -23,7 +23,7 @@ test_relgroups_invalid() {
 	local invalid
 
 	# shellcheck disable=SC2086
-	invalid="$(grep -r "^relgroup=" $apkbuilds | grep -v ":$regex" | sort)"
+	invalid="$(grep -r "^relgroup=" $APKBUILDS | grep -v ":$regex" | sort)"
 	[ -z "$invalid" ] && return 0
 
 	echo "ERROR: relgroup lines found that don't start with '$regex'."
@@ -49,14 +49,14 @@ apkbuilds_print_pkgver() {
 # Print all relgroups used in aports
 relgroups_find() {
 	# shellcheck disable=SC2086
-	grep -hr "^relgroup=\"" $apkbuilds | cut -d \" -f 2 | sort -u
+	grep -hr "^relgroup=\"" $APKBUILDS | cut -d \" -f 2 | sort -u
 }
 
 # Print full paths to APKBUILDs using a certain relgroup
 # $1: relgroup
 apkbuilds_find_by_relgroup() {
 	# shellcheck disable=SC2086
-	grep -lr "^relgroup=\"$1\"" $apkbuilds | cut -d : -f 1 | sort
+	grep -lr "^relgroup=\"$1\"" $APKBUILDS | cut -d : -f 1 | sort
 }
 
 # All aports in one relgroup must have the same pkgver
