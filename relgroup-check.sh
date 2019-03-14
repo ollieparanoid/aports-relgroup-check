@@ -8,7 +8,7 @@
 # Alpine being installed (git push hook on random distro, pmOS CI, ...).
 
 # Find all APKBUILDs
-[ -z "$APORTS" ] && APORTS="$(realpath "$(dirname "$0")/../")"
+[ -z "$APORTS" ] && APORTS="$PWD"
 if ! [ -e "$APORTS/main/build-base" ]; then
 	echo "ERROR: Unable to deduce aports base checkout"
 	exit 1
