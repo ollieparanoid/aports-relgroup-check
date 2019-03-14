@@ -1,2 +1,6 @@
-ERROR: Unable to deduce aports base checkout
+usage: relgroup-check.sh [APORTS]
+
+APORTS is the path to your aports dir, you can either set it as
+       argument as shown above, or as environment variable, or
+       run this script from within your aports dir
 exit code: 1
