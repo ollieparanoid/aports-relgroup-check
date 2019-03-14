@@ -5,5 +5,5 @@ ERROR: relgroup 'relgroup1' is inconsistent:
 ERROR: relgroup 'relgroup2' is inconsistent:
        pkgver="2.1.0": ./community/fifth/APKBUILD
        pkgver="2.0.0": ./community/fourth/APKBUILD
-*** relgroup test failed!
+*** relgroup check failed!
 exit code: 1

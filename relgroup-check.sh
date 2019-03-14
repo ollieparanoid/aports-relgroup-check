@@ -91,8 +91,8 @@ test_relgroups_inconsistent() {
 
 # Run both tests
 if test_relgroups_invalid && test_relgroups_inconsistent; then
-	echo "*** relgroup test successful"
+	echo "*** relgroup check successful"
 else
-	echo "*** relgroup test failed!"
+	echo "*** relgroup check failed!"
 	exit 1
 fi

@@ -3,5 +3,5 @@ ERROR: relgroup lines found that don't start with 'relgroup="[a-zA-Z0-9_.]*"'.
        ./community/fourth/APKBUILD:relgroup='relgroup2'
        ./main/first/APKBUILD:relgroup="'relgroup1'"
        ./main/third/APKBUILD:relgroup="$relgroup1"
-*** relgroup test failed!
+*** relgroup check failed!
 exit code: 1
